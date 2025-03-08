@@ -2,6 +2,7 @@
 
 #include "Account.h"
 #include "Book.h"
+#include "SHACalc.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -10,7 +11,9 @@ class Library;
 
 class Account;
 
-enum class UserType { STUDENT, FACULTY, LIBRARIAN };
+enum class UserType { STUDENT, FACULTY, LIBRARIAN, COUNT };
+
+std::string userTypeToString(UserType type);
 
 class User {
   private:
@@ -30,6 +33,7 @@ class User {
 
     std::string getName() const;
     std::string getUserID() const;
+    std::string getPassword() const;
     Account    &getAccount() const;
     UserType    getType() const;
 

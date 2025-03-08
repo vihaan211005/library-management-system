@@ -2,6 +2,19 @@
 #include "Account.h"
 #include "Library.h"
 
+std::string userTypeToString(UserType type) {
+        switch (type) {
+            case UserType::STUDENT:
+                return "Student";
+            case UserType::FACULTY:
+                return "Faculty";
+            case UserType::LIBRARIAN:
+                return "Librarian";
+            default:
+                return "Unknown";
+        }
+}
+
 User::User(const std::string &name, const std::string &userID, const std::string &password, Library *library, UserType userType) {
     this->name     = name;
     this->userID   = userID;
@@ -20,7 +33,11 @@ UserType User::getType() const {
 }
 
 bool User::checkPassword(const std::string &password) const {
-    return this->password == password;
+    return this->password == sha256(password);
+}
+
+std::string User::getPassword() const {
+    return password;
 }
 
 std::string User::getName() const {

@@ -17,6 +17,11 @@ set(SOURCES
     src/User.cpp
     utils/DateUtils.cpp
     utils/TerminalPrint.cpp
+    utils/SHACalc.cpp
 )
 
+find_package(OpenSSL REQUIRED)
+
 add_executable(LibraryManagementSystem ${SOURCES})
+
+target_link_libraries(LibraryManagementSystem OpenSSL::SSL OpenSSL::Crypto)

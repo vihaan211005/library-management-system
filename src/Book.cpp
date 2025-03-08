@@ -13,8 +13,8 @@ std::string bookStatusToString(BookStatus status) {
         }
 }
 
-Book::Book(const std::string &title, const std::string &author, const std::string &publisher, int year, const std::string &ISBN):
-    title(title), author(author), publisher(publisher), year(year), ISBN(ISBN), status(BookStatus::AVAILABLE) {
+Book::Book(const std::string &title, const std::string &author, const std::string &publisher, int year, const std::string &ISBN, BookStatus status):
+    title(title), author(author), publisher(publisher), year(year), ISBN(ISBN), status(status) {
 }
 
 void Book::setStatus(BookStatus status) {

@@ -2,7 +2,7 @@
 
 #include <string>
 
-enum class BookStatus { AVAILABLE, BORROWED, RESERVED };
+enum class BookStatus { AVAILABLE, BORROWED, RESERVED, COUNT };
 
 std::string bookStatusToString(BookStatus status);
 
@@ -16,7 +16,7 @@ class Book {
     BookStatus  status;
 
   public:
-    Book(const std::string &title, const std::string &author, const std::string &publisher, int year, const std::string &ISBN);
+    Book(const std::string &title, const std::string &author, const std::string &publisher, int year, const std::string &ISBN, BookStatus status);
 
     void setStatus(BookStatus status);
 

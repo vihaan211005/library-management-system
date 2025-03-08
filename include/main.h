@@ -15,3 +15,4 @@ void createLibrary();
 void createFirstUser();
 void handleLibrarian();
 void mainLogic();
+User *makeUser(UserType type);
