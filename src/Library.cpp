@@ -1,11 +1,17 @@
 #include "Library.h"
 #include <algorithm>
 
-Library::Library() {
+Library::Library(const std::string &libraryName) {
+    this->libraryName = libraryName;
+}
+
+std::string Library::getName() const {
+    return libraryName;
 }
 
 void Library::addBook(const Book &book) {
-    books.push_back(new Book(book));
+    if (getBook(book.getISBN()) == nullptr)
+        books.push_back(new Book(book));
 }
 
 void Library::removeBook(const std::string &ISBN) {
@@ -20,7 +26,8 @@ void Library::removeBook(const std::string &ISBN) {
 }
 
 void Library::addUser(User *user) {
-    users.push_back(user);
+    if (getUser(user->getUserID()) == nullptr)
+        users.push_back(user);
 }
 
 void Library::removeUser(const std::string &userID) {
@@ -45,6 +52,15 @@ Book *Library::getBook(const std::string &ISBN) const {
         for (Book *book: books) {
                 if (book->getISBN() == ISBN) {
                     return book;
+            }
+        }
+    return nullptr;
+}
+
+User *Library::getUser(const std::string &userID) const {
+        for (User *user: users) {
+                if (user->getUserID() == userID) {
+                    return user;
             }
         }
     return nullptr;

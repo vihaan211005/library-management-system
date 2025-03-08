@@ -1,7 +1,9 @@
 #pragma once
 
+#include <iomanip>
 #include <iostream>
 #include <vector>
-#include <iomanip>
 
-void printTable(const std::vector<std::vector<std::string>>& data);
+void printTable(const std::vector<std::vector<std::string>> &data);
+
+int printOptions(const std::vector<std::string> &options);

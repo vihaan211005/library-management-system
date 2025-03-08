@@ -1,12 +1,20 @@
 #include "Book.h"
 
-Book::Book(const std::string& title,
-           const std::string& author,
-           const std::string& publisher,
-           int                year,
-           const std::string& ISBN)
-    : title(title), author(author), publisher(publisher), year(year), ISBN(ISBN),
-      status(BookStatus::AVAILABLE) {
+std::string bookStatusToString(BookStatus status) {
+        switch (status) {
+            case BookStatus::AVAILABLE:
+                return "Available";
+            case BookStatus::BORROWED:
+                return "Borrowed";
+            case BookStatus::RESERVED:
+                return "Reserved";
+            default:
+                return "Unknown";
+        }
+}
+
+Book::Book(const std::string &title, const std::string &author, const std::string &publisher, int year, const std::string &ISBN):
+    title(title), author(author), publisher(publisher), year(year), ISBN(ISBN), status(BookStatus::AVAILABLE) {
 }
 
 void Book::setStatus(BookStatus status) {

@@ -2,15 +2,25 @@
 #include "Account.h"
 #include "Library.h"
 
-User::User(const std::string &name, const std::string &userID, const std::string &password) {
+User::User(const std::string &name, const std::string &userID, const std::string &password, Library *library, UserType userType) {
     this->name     = name;
     this->userID   = userID;
     this->password = password;
     this->account  = new Account(this);
+    this->library  = library;
+    this->type     = userType;
 }
 
 User::~User() {
     delete account;
+}
+
+UserType User::getType() const {
+    return type;
+}
+
+bool User::checkPassword(const std::string &password) const {
+    return this->password == password;
 }
 
 std::string User::getName() const {
@@ -25,7 +35,8 @@ Account &User::getAccount() const {
     return *account;
 }
 
-Student::Student(const std::string &name, const std::string &id, const std::string &password): User(name, id, password) {
+Student::Student(const std::string &name, const std::string &id, const std::string &password, Library *library):
+    User(name, id, password, library, UserType::STUDENT) {
 }
 
 void Student::borrowBook(Book &book) {
@@ -55,7 +66,8 @@ void Student::payFine() {
     getAccount().payFine();
 }
 
-Faculty::Faculty(const std::string &name, const std::string &id, const std::string &password): User(name, id, password) {
+Faculty::Faculty(const std::string &name, const std::string &id, const std::string &password, Library *library):
+    User(name, id, password, library, UserType::FACULTY) {
 }
 
 void Faculty::borrowBook(Book &book) {
@@ -76,14 +88,16 @@ void Faculty::returnBook(Book &book) {
         std::cout << "Please return books before " << maxDays << " days from next time" << std::endl;
 }
 
-Librarian::Librarian(const std::string &name, const std::string &id, const std::string &password): User(name, id, password) {
-    this->library = new Library();
+Librarian::Librarian(const std::string &name, const std::string &id, const std::string &password, Library *library):
+    User(name, id, password, library, UserType::LIBRARIAN) {
 }
 
 void Librarian::borrowBook(Book &book) {
+    (void) book;
     std::cout << "Librarians do not borrow books." << std::endl;
 }
 
 void Librarian::returnBook(Book &book) {
+    (void) book;
     std::cout << "Librarians do not return books." << std::endl;
 }

@@ -4,6 +4,8 @@
 
 enum class BookStatus { AVAILABLE, BORROWED, RESERVED };
 
+std::string bookStatusToString(BookStatus status);
+
 class Book {
   private:
     std::string title;

@@ -22,7 +22,7 @@ class Account {
   public:
     Account(User *user);
     void addBook(Book &book);
-    int removeBook(Book &book);
+    int  removeBook(Book &book);
     int  calculateFine(int maxDays, int finePerDay);
     void payFine();
 

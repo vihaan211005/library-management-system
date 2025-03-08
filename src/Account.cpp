@@ -26,7 +26,7 @@ int Account::removeBook(Book &book) {
                 if (it->book->getISBN() == book.getISBN()) {
                     book.setStatus(BookStatus::AVAILABLE);
                     it->returnTime = getCurrentTime();
-                    int days = calculateDateDifference(it->returnTime, it->borrowTime);
+                    int days       = calculateDateDifference(it->returnTime, it->borrowTime);
 
                     borrowHistory.push_back(*it);
                     borrowedBooks.erase(it);
