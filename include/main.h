@@ -5,6 +5,7 @@
 #include "Library.h"
 #include "TerminalPrint.h"
 #include "User.h"
+#include "DateUtils.h"
 
 Library *library = nullptr;
 User    *user    = nullptr;

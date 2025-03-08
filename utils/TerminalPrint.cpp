@@ -39,3 +39,17 @@ int printOptions(const std::vector<std::string> &options) {
     std::cin.ignore(10000, '\n');
     return answer;
 }
+
+bool getYN() {
+    char answer;
+        while (true) {
+            std::cin >> answer;
+                if (answer == 'y' || answer == 'n') {
+                    std::cin.clear();
+                    std::cin.ignore(10000, '\n');
+                    return (answer == 'y');
+                } else {
+                    std::cout << "Invalid input. Please enter y or n: ";
+                }
+        }
+}

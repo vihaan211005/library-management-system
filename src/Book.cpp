@@ -17,6 +17,22 @@ Book::Book(const std::string &title, const std::string &author, const std::strin
     title(title), author(author), publisher(publisher), year(year), ISBN(ISBN), status(status) {
 }
 
+void Book::setTitle(const std::string &title) {
+    this->title = title;
+}
+
+void Book::setAuthor(const std::string &author) {
+    this->author = author;
+}
+
+void Book::setPublisher(const std::string &publisher) {
+    this->publisher = publisher;
+}
+
+void Book::setYear(int year) {
+    this->year = year;
+}
+
 void Book::setStatus(BookStatus status) {
     this->status = status;
 }

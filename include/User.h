@@ -37,6 +37,9 @@ class User {
     Account    &getAccount() const;
     UserType    getType() const;
 
+    void setName(const std::string &name);
+    void setType(UserType type);
+
     bool checkPassword(const std::string &password) const;
 };
 

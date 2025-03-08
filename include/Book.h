@@ -20,6 +20,11 @@ class Book {
 
     void setStatus(BookStatus status);
 
+    void setTitle(const std::string &title);
+    void setAuthor(const std::string &author);
+    void setPublisher(const std::string &publisher);
+    void setYear(int year);
+
     std::string getTitle() const;
     std::string getAuthor() const;
     std::string getPublisher() const;

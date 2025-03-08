@@ -28,6 +28,14 @@ User::~User() {
     delete account;
 }
 
+void User::setName(const std::string &name) {
+    this->name = name;
+}
+
+void User::setType(UserType userType) {
+    this->type = userType;
+}
+
 UserType User::getType() const {
     return type;
 }
@@ -60,20 +68,23 @@ void Student::borrowBook(Book &book) {
     int fine = getAccount().calculateFine(maxDays, finePerDay);
 
         if (fine) {
-            std::cout << "You have to pay a fine of ₹" << fine << " for borrowing." << std::endl;
+            std::cout << "You have to pay a fine of ₹" << fine << " for borrowing first." << std::endl;
             return;
         } else if (getAccount().getBorrowedBooks().size() == maxBooks) {
             std::cout << "You have reached the maximum number of books you can borrow." << std::endl;
             return;
         } else {
+            book.setStatus(BookStatus::BORROWED);
             getAccount().addBook(book);
         }
 }
 
 void Student::returnBook(Book &book) {
     int days = getAccount().removeBook(book);
+    
     if (days > maxDays)
         std::cout << "You have to pay a fine of ₹" << (days - maxDays) * finePerDay << std::endl;
+    book.setStatus(BookStatus::AVAILABLE);
 }
 
 void Student::payFine() {
