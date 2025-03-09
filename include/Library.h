@@ -10,6 +10,13 @@
 class User;
 class Book;
 
+const std::string books_filepath = "../data/books.csv";
+#ifdef OPENSSL_FOUND
+const std::string users_filepath = "../data/users.csv";
+#else
+const std::string users_filepath = "../data/users_nohash.csv";
+#endif
+
 class Library {
   private:
     std::string         libraryName;

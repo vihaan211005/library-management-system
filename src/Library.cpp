@@ -73,7 +73,7 @@ User *Library::getUser(const std::string &userID) const {
 }
 
 void saveBooks(const Library &library) {
-    std::ofstream file("../data/books.csv");
+    std::ofstream file(books_filepath);
         if (file.is_open()) {
             file << "ISBN,Title,Author,Publisher,Year,Status\n";
                 for (const Book *book: library.getBooks()) {
@@ -84,7 +84,7 @@ void saveBooks(const Library &library) {
 }
 
 void saveUsers(const Library &library) {
-    std::ofstream file("../data/users.csv");
+    std::ofstream file(users_filepath);
         if (file.is_open()) {
             file << "ID,Name,Type,Password\n";
                 for (const User *user: library.getUsers()) {
@@ -95,7 +95,7 @@ void saveUsers(const Library &library) {
 }
 
 void retrieveUsers(Library &library) {
-    std::ifstream file("../data/users.csv");
+    std::ifstream file(users_filepath);
 
         if (!file.is_open()) {
             std::cerr << "Error: Unable to open file for reading.\n";
@@ -141,7 +141,7 @@ void retrieveUsers(Library &library) {
 }
 
 void retrieveBooks(Library &library) {
-    std::ifstream file("../data/books.csv");
+    std::ifstream file(books_filepath);
 
         if (!file.is_open()) {
             std::cerr << "Error: Unable to open file for reading.\n";

@@ -20,8 +20,13 @@ set(SOURCES
     utils/SHACalc.cpp
 )
 
-find_package(OpenSSL REQUIRED)
+find_package(OpenSSL)
 
 add_executable(LibraryManagementSystem ${SOURCES})
-
-target_link_libraries(LibraryManagementSystem OpenSSL::SSL OpenSSL::Crypto)
+if(OpenSSL_FOUND)
+    message(STATUS "OpenSSL found: ${OpenSSL_VERSION}")
+    add_definitions(-DOPENSSL_FOUND)
+    target_link_libraries(LibraryManagementSystem PRIVATE OpenSSL::SSL OpenSSL::Crypto)
+else()
+    message(WARNING "OpenSSL not found. Some features may be disabled.")
+endif()
