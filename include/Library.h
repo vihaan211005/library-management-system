@@ -11,6 +11,8 @@ class User;
 class Book;
 
 const std::string dir_path = "../data/";
+const std::string lib_path = "../data/library.txt";
+
 const std::string books_filepath = "../data/books.csv";
 #ifdef OPENSSL_FOUND
 const std::string users_filepath = "../data/users.csv";
@@ -40,4 +42,6 @@ class Library {
     friend void         saveUsers(const Library &library);
     friend void         retrieveBooks(Library &library);
     friend void         retrieveUsers(Library &library);
+    friend void         saveLibName(Library &library);
 };
+Library *retrieveLibName();

@@ -12,6 +12,7 @@ void login() {
             std::cout << "Please login." << std::endl;
         } else {
             std::cout << "Exiting..." << std::endl;
+            saveLibName(*library);
             saveBooks(*library);
             saveUsers(*library);
             exit(1);
@@ -32,6 +33,7 @@ void login() {
 }
 
 void createLibrary() {
+    library = retrieveLibName();
         if (library == nullptr) {
             std::string libraryName;
             std::cout << "Enter library name: ";

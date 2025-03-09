@@ -72,6 +72,25 @@ User *Library::getUser(const std::string &userID) const {
     return nullptr;
 }
 
+void saveLibName(Library &library) {
+    std::ofstream file(lib_path);
+        if (file.is_open()) {
+            file << library.getName();
+            file.close();
+    }
+}
+
+Library *retrieveLibName() {
+    std::ifstream file(lib_path);
+        if (file.is_open()) {
+            std::string line;
+            std::getline(file, line);
+            return new Library(line);
+            file.close();
+    }
+    return nullptr;
+}
+
 void saveBooks(const Library &library) {
     std::ofstream file(books_filepath);
         if (file.is_open()) {
@@ -173,11 +192,10 @@ void retrieveUsers(Library &library) {
                                     std::cerr << "Error parsing line: " << line << " -> " << e.what() << "\n";
                             }
                         }
-                        file_user.close();
+                    file_user.close();
             }
-
         }
-            file.close();
+    file.close();
 }
 
 void retrieveBooks(Library &library) {
