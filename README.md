@@ -80,3 +80,7 @@ To use the Library Management System, follow these steps:
 ## Acknowledgments
 
 The Library Management System was developed by Vihaan Sapra (Roll No. 231149), Department of Computer Science and Engineering, Indian Institute of Technology Kanpur. Special thanks to Prof. Indranil Saha and the teaching assistants of the CS253 course for their guidance and support throughout the course.
+
+## Note for TA
+
+I have made 5 students and 3 faculty and 10+ books. Password for all users is currently 123 and to see id you can see users.csv. ID of librarian is 23. I have 2 files users and users_nohash depending on if the system has openSSL installed or not. If it is installed password is hashed and stored in users.csv while if it is not it is saved in users_nohash. For testing purposes days has been replaced by seconds for fine calculation. To change it back see DateUtils.cpp.  
