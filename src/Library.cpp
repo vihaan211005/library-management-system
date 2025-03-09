@@ -144,8 +144,8 @@ void retrieveUsers(Library &library) {
                             default:
                                 std::cerr << "Warning: Unknown user type -> " << typeStr << "\n";
                                 break;
-                                library.addUser(userTemp);
                         }
+                    library.addUser(userTemp);
 
                 } catch (const std::exception &e) {
                     std::cerr << "Error parsing line: " << line << " -> " << e.what() << "\n";

@@ -1,2 +1,9 @@
 ISBN,Title,Author,Publisher,Year,Status
-1,1,1,1,1,0
+978-0131103627,The C Programming Language,Brian W. Kernighan,Prentice Hall,1988,0
+978-0262033848,Introduction to Algorithms,Thomas H. Cormen,MIT Press,2009,0
+978-0134093413,Computer Networks,Andrew S. Tanenbaum,Pearson,2019,0
+978-1491950357,Deep Learning with Python,François Chollet,O'Reilly Media,2017,0
+978-1449369415,Python for Data Analysis,Wes McKinney,O'Reilly Media,2012,0
+978-0201633610,Design Patterns,Erich Gamma,Addison-Wesley,1994,0
+978-0596007126,Head First Design Patterns,Eric Freeman,O'Reilly Media,2004,0
+978-0132350884,Clean Code,Robert C. Martin,Prentice Hall,2008,0
