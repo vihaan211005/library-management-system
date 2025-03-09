@@ -46,10 +46,16 @@ Ensure you have the following installed on your system:
 - **Make**
 - **Git**
 
-## Optional
+```sh
+sudo apt-get update
+sudo apt-get install -y cmake build-essential make git
+```
+
+## Optional(Recommended)
 
 - **OpenSSL**
 ```sh
+sudo apt-get update
 sudo apt-get install libssl-dev
 ```
 
@@ -87,4 +93,4 @@ The Library Management System was developed by Vihaan Sapra (Roll No. 231149), D
 
 ## Note for TA
 
-I have made 5 students and 3 faculty and 10+ books. Password for all users is currently 123 and to see id you can see users.csv. ID of librarian is 23. I have 2 files users and users_nohash depending on if the system has openSSL installed or not. If it is installed password is hashed and stored in users.csv while if it is not it is saved in users_nohash. For testing purposes days has been replaced by seconds for fine calculation. To change it back see DateUtils.cpp.  
+I have made 5 students and 3 faculty and 10+ books. Password for all users is currently 123 and to see id you can see users.csv. ID of librarian is 23. I have 2 files users and users_nohash depending on if the system has openSSL installed or not. If it is installed password is hashed and stored in users.csv while if it is not it is saved in users_nohash. For testing purposes days has been replaced by seconds for fine calculation. To change it back see DateUtils.cpp.
