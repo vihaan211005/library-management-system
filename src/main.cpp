@@ -291,6 +291,11 @@ void handleLibrarian() {
                     std::cout << "Enter user ID to update: ";
                     std::string idToUpdate;
                     std::getline(std::cin, idToUpdate);
+                        if (idToUpdate == user->getUserID()) {
+                            std::cout << "You cannot update yourself." << std::endl;
+                            handleLibrarian();
+                            break;
+                    }
                     User *userToUpdate = library->getUser(idToUpdate);
                         if (userToUpdate == nullptr) {
                             std::cout << "User not found." << std::endl;
@@ -303,13 +308,13 @@ void handleLibrarian() {
                             std::string newName;
                             std::getline(std::cin, newName);
                             userToUpdate->setName(newName);
-                            std::cout << "Updated successfully";
+                            std::cout << "Updated successfully" << std::endl;
                     }
                     std::cout << "Change type? (y/n): ";
                         if (getYN()) {
                             UserType typeTemp = getUserTypeTerminal();
                             userToUpdate->setType(typeTemp);
-                            std::cout << "Updated successfully";
+                            std::cout << "Updated successfully" << std::endl;
                     }
                     handleLibrarian();
                     break;
@@ -330,7 +335,7 @@ void handleLibrarian() {
                             std::string newTitle;
                             std::getline(std::cin, newTitle);
                             bookToUpdate->setTitle(newTitle);
-                            std::cout << "Updated successfully";
+                            std::cout << "Updated successfully" << std::endl;
                     }
                     std::cout << "Change author? (y/n): ";
                         if (getYN()) {
@@ -338,7 +343,7 @@ void handleLibrarian() {
                             std::string newAuthor;
                             std::getline(std::cin, newAuthor);
                             bookToUpdate->setAuthor(newAuthor);
-                            std::cout << "Updated successfully";
+                            std::cout << "Updated successfully" << std::endl;
                     }
                     std::cout << "Change publication year? (y/n): ";
                         if (getYN()) {
@@ -347,7 +352,7 @@ void handleLibrarian() {
                             std::cin >> newYear;
                             std::cin.ignore();
                             bookToUpdate->setYear(newYear);
-                            std::cout << "Updated successfully";
+                            std::cout << "Updated successfully" << std::endl;
                     }
                     std::cout << "Change publisher? (y/n): ";
                         if (getYN()) {
@@ -355,7 +360,7 @@ void handleLibrarian() {
                             std::string newPublisher;
                             std::getline(std::cin, newPublisher);
                             bookToUpdate->setPublisher(newPublisher);
-                            std::cout << "Updated successfully";
+                            std::cout << "Updated successfully" << std::endl;
                     }
                     handleLibrarian();
                     break;

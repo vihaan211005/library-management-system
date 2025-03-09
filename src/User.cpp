@@ -95,6 +95,8 @@ void Student::payFine() {
 
     if (fine)
         std::cout << "You have to return overdue books and pay a fine of ₹" << fine << std::endl;
+    else
+        std::cout << "You have no overdue books." << std::endl;
     getAccount().payFine();
 }
 

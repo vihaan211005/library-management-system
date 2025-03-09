@@ -19,6 +19,7 @@ void Account::addBook(Book &book) {
     book.setStatus(BookStatus::BORROWED);
     time_t now = getCurrentTime();
     borrowedBooks.push_back({&book, now, 0});
+    std::cout << "Book borrowed successfully." << std::endl;
 }
 
 int Account::removeBook(Book &book) {
@@ -30,6 +31,7 @@ int Account::removeBook(Book &book) {
 
                     borrowHistory.push_back(*it);
                     borrowedBooks.erase(it);
+                    std::cout << "Book returned successfully." << std::endl;
                     return days;
             }
         }

@@ -9,7 +9,8 @@ The Library Management System is a C++ application designed to manage and track 
 *   User Roles and Permissions:
     *   Students: Can borrow up to 3 books at a time, maximum borrowing period of 15 days, and fines of 10 rupees per day for overdue books.
     *   Faculty: Can borrow up to 5 books at a time, maximum borrowing period of 30 days, and no fines for overdue books.
-    *   Librarian: Can manage the library, including adding, removing, or updating books, and adding or removing users.
+    *   Librarian: Can manage the library, including adding, removing, or updating books, and adding, removing or updating users.
+    * To prevent unauthorized access, the system will have a login system with a username and password.
 *   Book Management:
     *   Add new books to the library's inventory.
     *   Remove books from the library's inventory.
@@ -18,11 +19,14 @@ The Library Management System is a C++ application designed to manage and track 
     *   Track borrowing and returning of books by students and faculty.
     *   Set due dates for borrowed books.
 *   Reporting:
-    *   Generate reports on book inventory, patron borrowing history, and overdue books.
+    *   Generate reports on book inventory, student, faculty borrowing history, and overdue books.
 *   Account Management:
     *   Maintain a record of currently borrowed books.
     *   Track overdue books and calculate fines.
-
+*   Password Hashing:
+    *   Passwords are stored in file and in class after applying SHA-256 hashing.
+    * Password is verified by check hash of entered password with stored hash.
+    *   Secure user password in case of data breach.
 ## Classes and Objects
 
 *   `User`: Represents a user in the library system.
