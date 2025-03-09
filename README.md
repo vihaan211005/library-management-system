@@ -33,24 +33,21 @@ The Library Management System is a C++ application designed to manage and track 
 *   `Account`: Represents a user's account, tracking borrowed books and fines.
 *   `Library`: Represents the Users and Books in the library, maintains inventory.
 
-<!-- ## Methods
-
-*   `addBook()`: Adds a new book to the library's inventory.
-*   `removeBook()`: Removes a book from the library's inventory.
-*   `updateBook()`: Updates a book's details.
-*   `borrowBook()`: Allows a user to borrow a book.
-*   `returnBook()`: Allows a user to return a book.
-*   `generateReport()`: Generates reports on book inventory, patron borrowing history, and overdue books.
-*   `payFine()`: Allows a user to pay their outstanding fines. -->
-
 ## Prerequisites
 
 Ensure you have the following installed on your system:
 
-- **CMake** (version 3.x or higher)
-- **C++ Compiler** (GCC/Clang/MSVC)
-- **Make** (for Linux/macOS) or **Ninja/MinGW** (for Windows)
-- **Git** (optional, to clone the repository)
+- **CMake**
+- **C++ Compiler**
+- **Make**
+- **Git**
+
+## Optional
+
+- **OpenSSL**
+```sh
+sudo apt-get install libssl-dev
+```
 
 ## Compilation and Execution 
 

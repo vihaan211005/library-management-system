@@ -1,7 +1,7 @@
 #include <ctime>
 #include <string>
 int calculateDateDifference(time_t time1, time_t time2) {
-    return (time2 - time1) / (60 * 60 * 24);
+    return (time2 - time1) / (1);
 }
 
 time_t getCurrentTime() {

@@ -173,10 +173,11 @@ void retrieveUsers(Library &library) {
                                     std::cerr << "Error parsing line: " << line << " -> " << e.what() << "\n";
                             }
                         }
+                        file_user.close();
             }
 
-            file.close();
         }
+            file.close();
 }
 
 void retrieveBooks(Library &library) {

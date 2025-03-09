@@ -26,7 +26,7 @@ int Account::removeBook(Book &book) {
                 if (it->book->getISBN() == book.getISBN()) {
                     book.setStatus(BookStatus::AVAILABLE);
                     it->returnTime = getCurrentTime();
-                    int days       = calculateDateDifference(it->returnTime, it->borrowTime);
+                    int days       = calculateDateDifference(it->borrowTime, it->returnTime);
 
                     borrowHistory.push_back(*it);
                     borrowedBooks.erase(it);
@@ -42,7 +42,7 @@ int Account::calculateFine(int maxDays, int finePerDay) {
     time_t now      = getCurrentTime();
 
         for (const auto &borrowed: borrowedBooks) {
-            int daysBorrowed = calculateDateDifference(now, borrowed.borrowTime);
+            int daysBorrowed = calculateDateDifference(borrowed.borrowTime, now);
             if (daysBorrowed < 0)
                 throw std::invalid_argument("Days borrowed cannot be negative.");
             if (daysBorrowed > maxDays)
@@ -55,7 +55,7 @@ std::vector<Book *> Account::getMaxOverdue(int days) const {
     std::vector<Book *> maxOverdueBooks;
     time_t              now = getCurrentTime();
         for (const auto &borrowed: borrowedBooks) {
-            int daysBorrowed = calculateDateDifference(now, borrowed.borrowTime);
+            int daysBorrowed = calculateDateDifference(borrowed.borrowTime, now);
             if (daysBorrowed > days)
                 maxOverdueBooks.push_back(borrowed.book);
         }
