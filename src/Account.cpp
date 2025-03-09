@@ -77,3 +77,11 @@ std::vector<BorrowedBook> Account::getBorrowHistory() const {
 int Account::getFine() const {
     return outstandingFine;
 }
+
+void Account::addToBorrowed(BorrowedBook book) {
+    borrowedBooks.push_back(book);
+}
+
+void Account::addToHistory(BorrowedBook book) {
+    borrowHistory.push_back(book);
+}

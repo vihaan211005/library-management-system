@@ -92,6 +92,18 @@ void saveUsers(const Library &library) {
                 }
             file.close();
     }
+        for (const User *user: library.getUsers()) {
+            std::ofstream file(dir_path + "_" + user->getUserID() + ".csv");
+                if (file.is_open()) {
+                    file << "ISBN,BorrowTime,ReturnTime\n";
+                        for (BorrowedBook book: user->getAccount().getBorrowedBooks()) {
+                            file << book.book->getISBN() << "," << book.borrowTime << "," << book.returnTime << "\n";
+                        }
+                        for (BorrowedBook book: user->getAccount().getBorrowHistory()) {
+                            file << book.book->getISBN() << "," << book.borrowTime << "," << book.returnTime << "\n";
+                        }
+            }
+        }
 }
 
 void retrieveUsers(Library &library) {
@@ -109,6 +121,8 @@ void retrieveUsers(Library &library) {
             std::stringstream ss(line);
             std::string       id, name, typeStr, password;
 
+            User *userTemp;
+
                 if (!std::getline(ss, id, ',') || !std::getline(ss, name, ',') || !std::getline(ss, typeStr, ',') || !std::getline(ss, password, ',')) {
                     std::cerr << "Warning: Invalid line format -> " << line << "\n";
                     continue;
@@ -119,25 +133,50 @@ void retrieveUsers(Library &library) {
 
                         switch (type) {
                             case UserType::STUDENT:
-                                library.addUser(new Student(name, id, password, &library));
+                                userTemp = new Student(name, id, password, &library);
                                 break;
                             case UserType::FACULTY:
-                                library.addUser(new Faculty(name, id, password, &library));
+                                userTemp = new Faculty(name, id, password, &library);
                                 break;
                             case UserType::LIBRARIAN:
-                                library.addUser(new Librarian(name, id, password, &library));
+                                userTemp = new Librarian(name, id, password, &library);
                                 break;
                             default:
                                 std::cerr << "Warning: Unknown user type -> " << typeStr << "\n";
                                 break;
+                                library.addUser(userTemp);
                         }
 
                 } catch (const std::exception &e) {
                     std::cerr << "Error parsing line: " << line << " -> " << e.what() << "\n";
             }
-        }
+            std::ifstream file_user(dir_path + "_" + id + ".csv");
+                if (file_user.is_open()) {
+                    std::string line;
+                    std::getline(file_user, line);
 
-    file.close();
+                        while (std::getline(file_user, line)) {
+                            std::stringstream ss(line);
+                            std::string       ISBN, BorrowTimeStr, ReturnTimeStr;
+                                if (!std::getline(ss, ISBN, ',') || !std::getline(ss, BorrowTimeStr, ',') || !std::getline(ss, ReturnTimeStr, ',')) {
+                                    std::cerr << "Warning: Invalid line format -> " << line << "\n";
+                                    continue;
+                            }
+                                try {
+                                    time_t borrowTime = std::stol(BorrowTimeStr);
+                                    time_t returnTime = std::stol(ReturnTimeStr);
+                                    if (returnTime)
+                                        userTemp->getAccount().addToHistory({library.getBook(ISBN), borrowTime, returnTime});
+                                    else
+                                        userTemp->getAccount().addToBorrowed({library.getBook(ISBN), borrowTime, returnTime});
+                                } catch (const std::exception &e) {
+                                    std::cerr << "Error parsing line: " << line << " -> " << e.what() << "\n";
+                            }
+                        }
+            }
+
+            file.close();
+        }
 }
 
 void retrieveBooks(Library &library) {

@@ -10,6 +10,7 @@
 class User;
 class Book;
 
+const std::string dir_path = "../data/";
 const std::string books_filepath = "../data/books.csv";
 #ifdef OPENSSL_FOUND
 const std::string users_filepath = "../data/users.csv";

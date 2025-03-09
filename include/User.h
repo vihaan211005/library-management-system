@@ -3,6 +3,7 @@
 #include "Account.h"
 #include "Book.h"
 #include "SHACalc.h"
+#include "DateUtils.h"
 #include <iostream>
 #include <string>
 #include <vector>

@@ -74,23 +74,27 @@ void Student::borrowBook(Book &book) {
             std::cout << "You have reached the maximum number of books you can borrow." << std::endl;
             return;
         } else {
-            book.setStatus(BookStatus::BORROWED);
             getAccount().addBook(book);
         }
 }
 
 void Student::returnBook(Book &book) {
     int days = getAccount().removeBook(book);
-    
+
     if (days > maxDays)
         std::cout << "You have to pay a fine of ₹" << (days - maxDays) * finePerDay << std::endl;
-    book.setStatus(BookStatus::AVAILABLE);
 }
 
 void Student::payFine() {
     int fine = getAccount().calculateFine(maxDays, finePerDay);
+        for (auto book: getAccount().getBorrowedBooks()) {
+                if (calculateDateDifference(book.borrowTime, getCurrentTime()) > maxDays) {
+                    getAccount().removeBook(*(book.book));
+            }
+        }
+
     if (fine)
-        std::cout << "You have to pay a fine of ₹" << fine << std::endl;
+        std::cout << "You have to return overdue books and pay a fine of ₹" << fine << std::endl;
     getAccount().payFine();
 }
 

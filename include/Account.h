@@ -30,4 +30,7 @@ class Account {
     std::vector<BorrowedBook> getBorrowHistory() const;
     int                       getFine() const;
     std::vector<Book *>       getMaxOverdue(int days) const;
+
+    void addToBorrowed(BorrowedBook book);
+    void addToHistory(BorrowedBook book);
 };
