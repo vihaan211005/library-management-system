@@ -11,26 +11,35 @@ void Account::addBook(Book &book) {
                 std::cout << "Book is already borrowed." << std::endl;
                 return;
             case BookStatus::RESERVED:
-                std::cout << "Book is reserved." << std::endl;
+                if (book.getReserver() == user->getUserID())
+                    break;
+                std::cout << "Book is reserved by another user." << std::endl;
                 return;
             default:
                 break;
         }
+        if (book.getAtLib() == false) {
+            std::cout << "Book is currently with the previous owner." << std::endl;
+            return;
+    }
     book.setStatus(BookStatus::BORROWED);
     time_t now = getCurrentTime();
     borrowedBooks.push_back({&book, now, 0});
+    book.setAtLib(false);
     std::cout << "Book borrowed successfully." << std::endl;
 }
 
 int Account::removeBook(Book &book) {
         for (auto it = borrowedBooks.begin(); it != borrowedBooks.end(); ++it) {
                 if (it->book->getISBN() == book.getISBN()) {
-                    book.setStatus(BookStatus::AVAILABLE);
+                    if (book.getStatus() == BookStatus::BORROWED)
+                        book.setStatus(BookStatus::AVAILABLE);
                     it->returnTime = getCurrentTime();
                     int days       = calculateDateDifference(it->borrowTime, it->returnTime);
 
                     borrowHistory.push_back(*it);
                     borrowedBooks.erase(it);
+                    book.setAtLib(true);
                     std::cout << "Book returned successfully." << std::endl;
                     return days;
             }

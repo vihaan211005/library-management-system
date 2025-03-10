@@ -28,6 +28,25 @@ User::~User() {
     delete account;
 }
 
+void User::reserveBook(Book &book) {
+        if (book.getStatus() == BookStatus::BORROWED) {
+                for (auto i: getAccount().getBorrowedBooks()) {
+                        if (i.book->getISBN() == book.getISBN()) {
+                            std::cout << "You have already borrowed this book." << std::endl;
+                            return;
+                    }
+                }
+
+            std::cout << "Book succesfully reserved." << std::endl;
+            book.setStatus(BookStatus::RESERVED);
+            book.setReserver(userID);
+        } else if (book.getStatus() == BookStatus::RESERVED) {
+            std::cout << "Book is already reserved." << std::endl;
+        } else {
+            std::cout << "Book is available and ready to be borrowed. No need to reserve it." << std::endl;
+        }
+}
+
 void User::setName(const std::string &name) {
     this->name = name;
 }

@@ -79,7 +79,7 @@ Book *makeBook() {
     std::cout << "Enter year: ";
     std::cin >> year;
     std::cin.ignore();
-    return new Book(title, author, publisher, year, ISBN, BookStatus::AVAILABLE);
+    return new Book(title, author, publisher, year, ISBN, BookStatus::AVAILABLE, "", 1);
 }
 
 void createFirstUser() {
@@ -130,7 +130,7 @@ void borrowBoookUser() {
             std::cout << "Book not found." << std::endl;
             return;
     }
-        if (bookToBorrow->getStatus() != BookStatus::AVAILABLE) {
+        if (bookToBorrow->getStatus() == BookStatus::BORROWED) {
             std::cout << "Book is not available." << std::endl;
             return;
     }
@@ -157,9 +157,23 @@ void returnBoookUser() {
     std::cout << "Book is not borrowed by you." << std::endl;
 }
 
+void reserveBookUser() {
+    displayBooks(library->getBooks());
+    std::cout << "Enter ISBN of book to reserve: ";
+    std::string isbn;
+    std::cin >> isbn;
+    std::cin.ignore();
+    Book *bookToReserve = library->getBook(isbn);
+        if (bookToReserve == nullptr) {
+            std::cout << "Book not found." << std::endl;
+            return;
+    }
+    user->reserveBook(*bookToReserve);
+}
+
 void handleFaculty() {
     std::cout << "Faculty Menu: " << std::endl;
-    std::vector<std::string> options = {"Borrow book", "Return book", "View History", "Logout"};
+    std::vector<std::string> options = {"Borrow book", "Return book", "Reserve Book", "View History", "Logout"};
     int                      choice  = printOptions(options);
         switch (choice) {
             case 1:
@@ -171,10 +185,14 @@ void handleFaculty() {
                 handleFaculty();
                 break;
             case 3:
-                displayBooks(user->getAccount().getBorrowHistory());
+                reserveBookUser();
                 handleFaculty();
                 break;
             case 4:
+                displayBooks(user->getAccount().getBorrowHistory());
+                handleFaculty();
+                break;
+            case 5:
                 logout();
                 break;
             default:
@@ -186,7 +204,7 @@ void handleFaculty() {
 
 void handleStudent() {
     std::cout << "Student Menu: " << std::endl;
-    std::vector<std::string> options = {"Borrow book", "Return book", "Pay Fine", "View History", "Logout"};
+    std::vector<std::string> options = {"Borrow book", "Return book", "Reserev Book", "Pay Fine", "View History", "Logout"};
     int                      choice  = printOptions(options);
         switch (choice) {
             case 1:
@@ -198,14 +216,18 @@ void handleStudent() {
                 handleStudent();
                 break;
             case 3:
-                dynamic_cast<Student *>(user)->payFine();
+                reserveBookUser();
                 handleStudent();
                 break;
             case 4:
-                displayBooks(user->getAccount().getBorrowHistory());
+                dynamic_cast<Student *>(user)->payFine();
                 handleStudent();
                 break;
             case 5:
+                displayBooks(user->getAccount().getBorrowHistory());
+                handleStudent();
+                break;
+            case 6:
                 logout();
                 break;
             default:

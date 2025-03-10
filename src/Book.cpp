@@ -13,8 +13,8 @@ std::string bookStatusToString(BookStatus status) {
         }
 }
 
-Book::Book(const std::string &title, const std::string &author, const std::string &publisher, int year, const std::string &ISBN, BookStatus status):
-    title(title), author(author), publisher(publisher), year(year), ISBN(ISBN), status(status) {
+Book::Book(const std::string &title, const std::string &author, const std::string &publisher, int year, const std::string &ISBN, BookStatus status, const std::string &reservedByID, bool atLib):
+    title(title), author(author), publisher(publisher), year(year), ISBN(ISBN), status(status), reservedByID(reservedByID), atLib(atLib) {
 }
 
 void Book::setTitle(const std::string &title) {
@@ -35,6 +35,14 @@ void Book::setYear(int year) {
 
 void Book::setStatus(BookStatus status) {
     this->status = status;
+}
+
+void Book::setReserver(const std::string &id) {
+    this->reservedByID = id;
+}
+
+void Book::setAtLib(bool curr) {
+    this->atLib = curr;
 }
 
 std::string Book::getTitle() const {
@@ -59,4 +67,12 @@ std::string Book::getISBN() const {
 
 BookStatus Book::getStatus() const {
     return status;
+}
+
+std::string Book::getReserver() const {
+    return reservedByID;
+}
+
+bool Book::getAtLib() const {
+    return atLib;
 }

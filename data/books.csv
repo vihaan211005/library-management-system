@@ -1,15 +1,15 @@
-ISBN,Title,Author,Publisher,Year,Status
-978-0131103627,The C Programming Language,Brian W. Kernighan,Prentice Hall,1988,0
-978-0262033848,Introduction to Algorithms,Thomas H. Cormen,MIT Press,2009,0
-978-0134093413,Computer Networks,Andrew S. Tanenbaum,Pearson,2019,0
-978-1491950357,Deep Learning with Python,Francois Chollet,O'Reilly Media,2017,0
-978-1449369415,Python for Data Analysis,Wes McKinney,O'Reilly Media,2012,0
-978-0201633610,Design Patterns,Erich Gamma,Addison-Wesley,1994,0
-978-0596007126,Head First Design Patterns,Eric Freeman,O'Reilly Media,2004,0
-978-0132350884,Clean Code,Robert C. Martin,Prentice Hall,2008,0
-978-0201485677,Refactoring: Improving the Design of Existing Code,Martin Fowler,Addison-Wesley,1999,0
-978-0596517748,JavaScript: The Good Parts,Douglas Crockford,O'Reilly Media,2008,0
-978-0135957059,Artificial Intelligence: A Modern Approach,Stuart Russell,Pearson,2020,0
-978-0201835953,The Mythical Man-Month,Frederick P. Brooks Jr.,Addison-Wesley,1995,0
-978-0262035613,Deep Learning,Ian Goodfellow,MIT Press,2016,0
-978-0131101631,Operating System Concepts,Abraham Silberschatz,Wiley,2018,0
+ISBN,Title,Author,Publisher,Year,Status,Reserver,Atlib
+978-0131103627,The C Programming Language,Brian W. Kernighan,Prentice Hall,1988,0,null,yes
+978-0262033848,Introduction to Algorithms,Thomas H. Cormen,MIT Press,2009,0,null,yes
+978-0134093413,Computer Networks,Andrew S. Tanenbaum,Pearson,2019,0,null,yes
+978-1491950357,Deep Learning with Python,Francois Chollet,O'Reilly Media,2017,0,null,yes
+978-1449369415,Python for Data Analysis,Wes McKinney,O'Reilly Media,2012,0,null,yes
+978-0201633610,Design Patterns,Erich Gamma,Addison-Wesley,1994,0,null,yes
+978-0596007126,Head First Design Patterns,Eric Freeman,O'Reilly Media,2004,0,null,yes
+978-0132350884,Clean Code,Robert C. Martin,Prentice Hall,2008,0,null,yes
+978-0201485677,Refactoring: Improving the Design of Existing Code,Martin Fowler,Addison-Wesley,1999,0,null,yes
+978-0596517748,JavaScript: The Good Parts,Douglas Crockford,O'Reilly Media,2008,0,null,yes
+978-0135957059,Artificial Intelligence: A Modern Approach,Stuart Russell,Pearson,2020,0,null,yes
+978-0201835953,The Mythical Man-Month,Frederick P. Brooks Jr.,Addison-Wesley,1995,0,null,yes
+978-0262035613,Deep Learning,Ian Goodfellow,MIT Press,2016,0,null,yes
+978-0131101631,Operating System Concepts,Abraham Silberschatz,Wiley,2018,0,null,yes

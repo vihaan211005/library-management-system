@@ -25,6 +25,7 @@ void printTable(const std::vector<std::vector<std::string>> &data) {
 }
 
 int printOptions(const std::vector<std::string> &options) {
+    std::cout << "\nOptions:\n";
         for (size_t i = 0; i < options.size(); ++i) {
             std::cout << i + 1 << ". " << options[i] << "\n";
         }

@@ -94,9 +94,9 @@ Library *retrieveLibName() {
 void saveBooks(const Library &library) {
     std::ofstream file(books_filepath);
         if (file.is_open()) {
-            file << "ISBN,Title,Author,Publisher,Year,Status\n";
+            file << "ISBN,Title,Author,Publisher,Year,Status,Reserver,Atlib\n";
                 for (const Book *book: library.getBooks()) {
-                    file << book->getISBN() << "," << book->getTitle() << "," << book->getAuthor() << "," << book->getPublisher() << "," << std::to_string(book->getYear()) << "," << std::to_string(static_cast<int>(book->getStatus())) << "\n";
+                    file << book->getISBN() << "," << book->getTitle() << "," << book->getAuthor() << "," << book->getPublisher() << "," << std::to_string(book->getYear()) << "," << std::to_string(static_cast<int>(book->getStatus())) << "," << book->getReserver() << "," << (book->getAtLib() ? "yes" : "no") << "\n";
                 }
             file.close();
     }
@@ -211,18 +211,19 @@ void retrieveBooks(Library &library) {
 
         while (std::getline(file, line)) {
             std::stringstream ss(line);
-            std::string       isbn, title, author, publisher, yearStr, statusStr;
+            std::string       isbn, title, author, publisher, yearStr, statusStr, reserver, atLibStr;
 
-                if (!std::getline(ss, isbn, ',') || !std::getline(ss, title, ',') || !std::getline(ss, author, ',') || !std::getline(ss, publisher, ',') || !std::getline(ss, yearStr, ',') || !std::getline(ss, statusStr, ',')) {
+                if (!std::getline(ss, isbn, ',') || !std::getline(ss, title, ',') || !std::getline(ss, author, ',') || !std::getline(ss, publisher, ',') || !std::getline(ss, yearStr, ',') || !std::getline(ss, statusStr, ',') || !std::getline(ss, reserver, ',') || !std::getline(ss, atLibStr, ',')) {
                     std::cerr << "Warning: Invalid line format -> " << line << "\n";
                     continue;
             }
 
                 try {
                     int        year   = std::stoi(yearStr);
+                    bool atLib = (atLibStr == "yes");
                     BookStatus status = static_cast<BookStatus>(std::stoi(statusStr));
 
-                    library.addBook(new Book(title, author, publisher, year, isbn, status));
+                    library.addBook(new Book(title, author, publisher, year, isbn, status, reserver, atLib));
                 } catch (const std::exception &e) {
                     std::cerr << "Error parsing line: " << line << " -> " << e.what() << "\n";
             }

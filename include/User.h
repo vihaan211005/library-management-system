@@ -29,6 +29,8 @@ class User {
     User(const std::string &name, const std::string &userID, const std::string &password, Library *library, UserType type);
     virtual ~User();
 
+    void reserveBook(Book &book);
+
     virtual void borrowBook(Book &book) = 0;
     virtual void returnBook(Book &book) = 0;
 
