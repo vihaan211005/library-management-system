@@ -204,7 +204,7 @@ void handleFaculty() {
 
 void handleStudent() {
     std::cout << "Student Menu: " << std::endl;
-    std::vector<std::string> options = {"Borrow book", "Return book", "Reserev Book", "Pay Fine", "View History", "Logout"};
+    std::vector<std::string> options = {"Borrow book", "Return book", "Reserve Book", "Pay Fine", "View History", "Logout"};
     int                      choice  = printOptions(options);
         switch (choice) {
             case 1:

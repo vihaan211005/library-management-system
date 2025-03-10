@@ -15,9 +15,11 @@ The Library Management System is a C++ application designed to manage and track 
     *   Add new books to the library's inventory.
     *   Remove books from the library's inventory.
     *   Update book details (title, author, publication date, etc.).
+    *   Reserving books for students and faculty when it is borrowed by another user so that another user cant borrow it when returned by the first.
 *   Borrowing and Returning:
     *   Track borrowing and returning of books by students and faculty.
     *   Set due dates for borrowed books.
+    *   Calculate fines for overdue books. Fines are assumed to be payed at the counter when returning the book. Overdue books are assumed to be returned over the counter at the time of fine payment.
 *   Reporting:
     *   Generate reports on book inventory, student, faculty borrowing history, and overdue books.
 *   Account Management:
@@ -93,4 +95,4 @@ The Library Management System was developed by Vihaan Sapra (Roll No. 231149), D
 
 ## Note for TA
 
-I have made 5 students and 3 faculty and 10+ books. Password for all users is currently 123 and to see id you can see users.csv. ID of librarian is 23. I have 2 files users and users_nohash depending on if the system has openSSL installed or not. If it is installed password is hashed and stored in users.csv while if it is not it is saved in users_nohash. For testing purposes days has been replaced by seconds for fine calculation. To change it back see DateUtils.cpp.
+I have made 5 students and 3 faculty and 10+ books. Password for all users is currently 123 and to see id you can see users.csv. ID of librarian is 23. I have 2 files users and users_nohash depending on if the system has openSSL installed or not. If it is installed password is hashed and stored in users.csv while if it is not it is saved in users_nohash. For testing purposes days has been replaced by seconds for fine calculation. To change it back see DateUtils.cpp. While returning books and paying fine, overdue books and fine is assumed to be exchanged over the counter.
